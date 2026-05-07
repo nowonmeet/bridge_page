@@ -11,6 +11,7 @@
         gtag('js', new Date());
 
         gtag('config', 'AW-17924096549');
+        gtag('config', 'G-804QH50KFR');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お風呂記録 - 風呂キャンセル界隈のためのゆるい生存日記</title>
@@ -22,7 +23,7 @@
 
     <!-- Event snippet for アプリストアへ遷移 conversion page -->
     <script>
-        function gtag_report_conversion(url) {
+        function gtag_report_conversion(url, store) {
             var callback = function () {
                 if (typeof (url) != 'undefined') {
                     window.location = url;
@@ -33,6 +34,9 @@
                 'value': 1.0,
                 'currency': 'JPY',
                 'event_callback': callback
+            });
+            gtag('event', 'click_store_button', {
+                'store': store
             });
             return false;
         }
@@ -177,13 +181,13 @@
                 <a href="https://apps.apple.com/jp/app/id6744083424"
                     class="inline-block transition-all duration-200 hover:-translate-y-1 hover:opacity-80"
                     target="_blank" rel="noopener noreferrer"
-                    onclick="return gtag_report_conversion('https://apps.apple.com/jp/app/id6744083424')">
+                    onclick="return gtag_report_conversion('https://apps.apple.com/jp/app/id6744083424', 'app_store')">
                     <img src="images/badge_ios.svg" alt="App Storeからダウンロード" class="h-14 w-auto">
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=com.nowonmeet.app016.bath_cancellation"
                     class="inline-block transition-all duration-200 hover:-translate-y-1 hover:opacity-80"
                     target="_blank" rel="noopener noreferrer"
-                    onclick="return gtag_report_conversion('https://play.google.com/store/apps/details?id=com.nowonmeet.app016.bath_cancellation')">
+                    onclick="return gtag_report_conversion('https://play.google.com/store/apps/details?id=com.nowonmeet.app016.bath_cancellation', 'play_store')">
                     <img src="images/badge_android.svg" alt="Google Playで手に入れよう" class="h-14 w-auto">
                 </a>
             </div>
@@ -200,13 +204,13 @@
             <a href="https://apps.apple.com/jp/app/id6744083424"
                 class="inline-block transition-all duration-200 active:scale-95" target="_blank"
                 rel="noopener noreferrer"
-                onclick="return gtag_report_conversion('https://apps.apple.com/jp/app/id6744083424')">
+                onclick="return gtag_report_conversion('https://apps.apple.com/jp/app/id6744083424', 'app_store')">
                 <img src="images/badge_ios.svg" alt="App Storeからダウンロード" class="h-10 w-auto">
             </a>
             <a href="https://play.google.com/store/apps/details?id=com.nowonmeet.app016.bath_cancellation"
                 class="inline-block transition-all duration-200 active:scale-95" target="_blank"
                 rel="noopener noreferrer"
-                onclick="return gtag_report_conversion('https://play.google.com/store/apps/details?id=com.nowonmeet.app016.bath_cancellation')">
+                onclick="return gtag_report_conversion('https://play.google.com/store/apps/details?id=com.nowonmeet.app016.bath_cancellation', 'play_store')">
                 <img src="images/badge_android.svg" alt="Google Playで手に入れよう" class="h-10 w-auto">
             </a>
         </div>
