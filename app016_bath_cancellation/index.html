@@ -24,20 +24,33 @@
     <!-- Event snippet for アプリストアへ遷移 conversion page -->
     <script>
         function gtag_report_conversion(url, store) {
-            var callback = function () {
+            // 二重遷移防止フラグ
+            var navigated = false;
+            var go = function () {
+                if (navigated) return;
+                navigated = true;
                 if (typeof (url) != 'undefined') {
                     window.location = url;
                 }
             };
+
+            // 保険: 1秒以内に必ず遷移させる（計測完了を待ちすぎない）
+            setTimeout(go, 1000);
+
+            // Google Ads コンバージョン
             gtag('event', 'conversion', {
                 'send_to': 'AW-17924096549/M8m-CIm4hPEbEKWE8OJC',
                 'value': 1.0,
-                'currency': 'JPY',
-                'event_callback': callback
+                'currency': 'JPY'
             });
+
+            // GA4 計測（送信完了を待ってから遷移）
             gtag('event', 'click_store_button', {
-                'store': store
+                'store': store,
+                'event_callback': go,
+                'event_timeout': 1000
             });
+
             return false;
         }
     </script>
